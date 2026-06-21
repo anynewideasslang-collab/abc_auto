@@ -1,0 +1,649 @@
+/**
+  Нормализация блочной модели
+ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/**
+  Убираем внутренние отступы слева тегам списков,
+  у которых есть атрибут class
+ */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+  Убираем внешние отступы body и двум другим тегам,
+  у которых есть атрибут class
+ */
+body,
+:where(blockquote, figure, fieldset):where([class]) {
+  margin: 0;
+}
+
+/**
+  Убираем внешние отступы вертикали нужным тегам,
+  у которых есть атрибут class
+ */
+:where(
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  ul,
+  ol,
+  dl
+):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  padding: 0;
+  border: none;
+}
+
+/**
+  Убираем стандартный маркер маркированному списку,
+  у которого есть атрибут class
+ */
+:where(ul[class]) {
+  list-style: none;
+}
+
+:where(address[class]) {
+  font-style: normal;
+}
+
+/**
+  Обнуляем вертикальные внешние отступы параграфа,
+  объявляем локальную переменную для внешнего отступа вниз,
+  чтобы избежать взаимодействие с более сложным селектором
+ */
+p {
+  --paragraphMarginBottom: 24px;
+
+  margin-block: 0;
+}
+
+/**
+  Внешний отступ вниз для параграфа без атрибута class,
+  который расположен не последним среди своих соседних элементов
+ */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+
+/**
+  Упрощаем работу с изображениями и видео
+ */
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/**
+  Наследуем свойства шрифт для полей ввода
+ */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  height: 100%;
+  /**
+    Убираем скачок интерфейса по горизонтали
+    при появлении / исчезновении скроллбара
+   */
+  scrollbar-gutter: stable;
+  /**
+    Плавный скролл
+   */
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  min-height: 100%;
+  /**
+    Унифицированный интерлиньяж
+   */
+  line-height: 1.5;
+}
+
+/**
+  Нормализация высоты элемента ссылки при его инспектировании в DevTools
+ */
+a:where([class]) {
+  display: inline-flex;
+}
+
+/**
+  Курсор-рука при наведении на элемент
+ */
+button,
+label {
+  cursor: pointer;
+}
+
+/**
+  Убирает серую подсветку при тапе на мобильных устройствах (iOS/Android)
+ */
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+  (за исключением тех, у которых уже указан
+  атрибут fill со значением 'none' или начинается с 'url')
+ */
+:where([fill]:not(
+  [fill="none"],
+  [fill^="url"]
+)) {
+  fill: currentColor;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+  (за исключением тех, у которых уже указан
+  атрибут stroke со значением 'none')
+ */
+:where([stroke]:not(
+  [stroke="none"],
+  [stroke^="url"]
+)) {
+  stroke: currentColor;
+}
+
+/**
+  Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+ */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+  Приведение рамок таблиц в классический 'collapse' вид
+ */
+:where(table) {
+  border-collapse: collapse;
+  border-color: currentColor;
+}
+
+/**
+  Удаляем все анимации и переходы для людей,
+  которые предпочитают их не использовать
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+}
+a{
+  text-decoration: none;
+  color: currentColor;
+}
+body{
+ overflow: hidden;
+ 
+
+  
+  /* box-sizing: border-box;
+  width: 100%;
+  margin-inline: auto; */
+
+
+}
+.map{
+  display: flex;
+  column-gap: 8px;
+  white-space: nowrap;
+  
+  
+}
+.map-icon{
+  flex-shrink: 0;
+}
+.mapAndTime{
+  display: flex;
+  column-gap: clamp(3.125rem, calc(0.803rem + 10.321vw), 13.188rem);
+  /* column-gap: 30px; */
+  white-space: nowrap;
+  /* align-items: center; */
+  flex-wrap: wrap;
+  
+  
+}
+.time{
+  display: flex;
+  column-gap: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+ 
+}
+.text-icon{
+  flex-shrink: 0;
+}
+.fText{
+  display: flex;
+  /* padding-left: clamp(1.875rem, calc(0.814rem + 14.744vw), 16.25rem); */
+  justify-content: space-between;
+  /* column-gap: clamp(3.125rem, calc(-5.128rem + 36.731vw), 38.938rem); */
+  padding-top: 15px;
+  column-gap: 10px;
+  
+  
+}
+.sText{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 10px;
+  flex-wrap: wrap;
+  white-space: nowrap;
+  padding-top: 33px;
+  row-gap: 10px;
+  
+}
+.whatsapp{
+  /* margin-left: auto; */
+  display: flex;
+  column-gap: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  align-items: center;
+  
+  
+  
+ 
+  
+}
+/* .whatsapp-icon{
+  align-items: flex-start;
+} */
+.logos{
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+  /* flex-wrap: wrap; */
+  
+}
+.dash{
+  width: 1px;
+  height: 35px;
+  background-color: #C2C2C4;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+}
+.dashes{
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  float:left
+
+}
+.logo{
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+}
+.tYear{
+  display: flex;
+  flex-shrink: 0;
+}
+.bDash{
+  width:28px;
+  height: 4px;
+  background-color: #262626;
+  
+}
+.headerPPP{
+  
+  /* padding-inline: clamp(30px, calc(13.02px + 14.744vw), 260px); */
+  padding-inline:clamp(0.625rem, -1.506rem + 9.47vw, 16.25rem); ;
+  /* padding-inline: 260px ; */
+  /* padding-left: clamp(1.875rem, calc(0.814rem + 14.744vw), 16.25rem); */
+  /* padding-left: clamp(30px, calc(13.02px + 14.744vw), 260px); */
+  box-sizing: border-box;
+  min-width: fit-content;
+  
+}
+.tText{
+  display: flex;
+  justify-content: space-between;
+  white-space: nowrap;
+  /* flex-wrap: wrap; */
+  /* flex-wrap: wrap; */
+  row-gap: 20px;
+  align-items: center;
+  /* column-gap: 10px; */
+
+
+
+}
+.notice{
+  display: flex;
+  column-gap: 24px;
+  flex-shrink: 0;
+  position: relative;
+}
+.catalog,.auto,.credit,.special,.taxi{
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+  flex-shrink: 0;
+  column-gap: 10px;
+  
+}
+.diagramm{
+  display: flex;
+  
+}
+.heart{
+  display: flex;
+  
+  
+}
+.heart-heart{
+  z-index: 1;
+}
+.diagramm-diagramm{
+  
+}
+.diagramm-red{
+  position: absolute;
+  margin-top: -11px;
+  margin-left:12px ;
+  border-radius: 14px;
+  background-color: #CA0100;
+  width: 26px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.heart-red{
+  position: absolute;
+  margin-top: -11px;
+  margin-left:16px ;
+  z-index: 2;
+  width: 26px;
+  height: 18px;
+  background-color: #CA0100;
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  
+}
+.heart-red-link,.diagramm-red-link{
+  color: #FFFFFF;
+}
+
+
+.menu{
+  display: flex;
+  column-gap: 16px;
+  
+  
+}
+.sMenu{
+  display: flex;
+  /* column-gap: 86px; */
+  /* justify-content: space-between; */
+  /* max-width: fit-content; */
+  flex-wrap: wrap;
+  column-gap: 86px;
+
+}
+
+.header-container{
+
+}
+@media(max-width:1640px){
+  .menu{
+    flex-basis: 100%;
+    order: 1;
+  }
+    .tText{
+    align-items: center;
+    column-gap: 10px;
+    row-gap: 15px;
+    padding-top: 19px;
+  }
+  .sMenu{
+    /* width: 100%; */
+    column-gap: 40px;
+  }
+  .notice{
+    
+    /* flex-basis: 100%;
+    order: 1; 
+    justify-content: center; */
+    
+  }
+@media(max-width:1365px){
+  .sMenu{
+    column-gap: 20px;
+    /* flex-wrap: wrap; */
+    flex-basis: 100%;
+    order: 1;
+    
+  }
+  .notice{
+    order: 2; 
+  }
+}
+@media(max-width: 1281px){
+  .sMenu{
+    /* flex-wrap: wrap; */
+    flex-basis: 100%;
+    order: 1; 
+    /* justify-content: center; */
+    column-gap: 10px;
+    
+  }
+  .notice{
+    
+    /* flex-basis: 50%; */
+    /* order: 2;  */
+    
+    
+  }
+}
+  .tText{
+    justify-content: space-between;
+  }
+
+
+  /* .logos{
+    flex-basis: 50%;
+    order: 0;
+  } */
+  
+}
+@media(max-width:1076px){
+  .sText{
+    padding-top:15px ;
+  }
+  .sMenu{
+    flex-basis: 100%;
+    order: 1; 
+    column-gap: 10px;
+
+  }
+  .notice{
+    
+  }
+  .tText{
+    align-items: center;
+    padding-top: 10px;
+  }
+}
+@media (max-width:900px){
+  .dash{
+    display: none;
+  }
+  .tYear{
+    display: none;
+  }
+  .sText{
+    padding-top:10px ;
+  }
+}
+@media(max-width:651px){
+  .sMenu{
+    column-gap: 6px;
+  }
+  .catalog,.auto,.credit,.special,.taxi{
+    column-gap: 5px;
+  }
+  .sMenu{
+    /* justify-content: center; */
+  }
+}
+@media (max-width:550px){
+  .headerPPP{
+    transform: scale(0.85);
+  }
+    .header-container{
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (max-width:619px){
+  .headerPPP{
+    transform: scale(0.97 );
+    justify-content: center;
+  }
+  .header-container{
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (max-width:589px){
+  .headerPPP{
+    transform: scale(0.95);
+    justify-content: center;
+  }
+  .header-container{
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (max-width:556px){
+  .headerPPP{
+    transform: scale(0.92);
+    justify-content: center;
+  }
+  .header-container{
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (max-width:540px){
+  .headerPPP{
+    transform: scale(0.9005);
+    justify-content: center;
+  }
+  .header-container{
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (max-width:515px){
+  .headerPPP{
+    transform: scale(0.86);
+    justify-content: center;
+  }
+  .header-container{
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (max-width:500px){
+  .headerPPP{
+    transform: scale(0.8);
+    justify-content: center;
+  }
+  .header-container{
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (max-width:450px){
+  .headerPPP{
+    transform: scale(0.76);
+    justify-content: center
+  }
+  .header-container{
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (max-width:424px){
+  .headerPPP{
+    transform: scale(0.74);
+    justify-content: center;
+  }
+  .header-container{
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (max-width:400px){
+  .headerPPP{
+    transform: scale(0.72);
+    justify-content: center;
+  }
+  .header-container{
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
