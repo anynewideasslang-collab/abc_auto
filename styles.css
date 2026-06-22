@@ -370,7 +370,7 @@ body{
 .headerPPP{
   
   /* padding-inline: clamp(30px, calc(13.02px + 14.744vw), 260px); */
-  /* padding-inline:clamp(0.625rem, -1.506rem + 9.47vw, 16.25rem); ; */
+  padding-inline:clamp(0.625rem, -1.506rem + 9.47vw, 16.25rem); ;
   /* padding-inline: 260px ; */
   /* padding-left: clamp(1.875rem, calc(0.814rem + 14.744vw), 16.25rem); */
   /* padding-left: clamp(30px, calc(13.02px + 14.744vw), 260px); */
@@ -530,7 +530,6 @@ body{
   justify-content: center;
   /* transform: scale(2.4); */
   margin-top: clamp(0px, -126.83px + 7.0917vw, 140px);
-  overflow: hidden;
   
 }
 }
