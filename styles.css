@@ -515,7 +515,7 @@ body{
   --scale-ratioTwo: clamp(1, 1 + (var(--vw-unitless) - 1786) / 1410, 2.4);
 }
 .header-container{
-  transform: scale(var(--scale-ratio));
+  /* transform: scale(var(--scale-ratio)); */
   /* margin-top: clamp(-44px, -68.75px + 6.875vw, 0px); фаофаощзцфацф */
   margin-top: clamp(-53px, -75.71px + 6.3095vw, 0px);
   display: flex;
@@ -524,7 +524,7 @@ body{
 }
 @media(min-width:1786px){
   .header-container{
-  transform: scale(var(--scale-ratioTwo));
+  /* transform: scale(var(--scale-ratioTwo)); */
   /* margin-top: clamp(-44px, -68.75px + 6.875vw, 0px); кофафолаф */
   display: flex;
   justify-content: center;
