@@ -514,25 +514,25 @@ body{
   --scale-ratio: clamp(0.35, 0.35 + (var(--vw-unitless) - 360) / 1292.308, 1);
   --scale-ratioTwo: clamp(1, 1 + (var(--vw-unitless) - 1786) / 1410, 2.4);
 }
-.header-container{
+/* .header-container{
   transform: scale(var(--scale-ratio));
-  /* margin-top: clamp(-44px, -68.75px + 6.875vw, 0px); */
+  margin-top: clamp(-44px, -68.75px + 6.875vw, 0px); фаофаощзцфацф
   margin-top: clamp(-53px, -75.71px + 6.3095vw, 0px);
   display: flex;
   justify-content: center;
   overflow: hidden;
-}
-@media(min-width:1786px){
+} */
+/* @media(min-width:1786px){
   .header-container{
   transform: scale(var(--scale-ratioTwo));
-  /* margin-top: clamp(-44px, -68.75px + 6.875vw, 0px); */
+  margin-top: clamp(-44px, -68.75px + 6.875vw, 0px); кофафолаф
   display: flex;
   justify-content: center;
-  /* transform: scale(2.4); */
+  transform: scale(2.4); кококоафаф
   margin-top: clamp(0px, -126.83px + 7.0917vw, 140px);
   
 }
-}
+} */
 @media(max-width:1464px){
   .menu{
     flex-basis: 100%;
@@ -596,7 +596,7 @@ body{
   
 }
 
-@media(max-width:1076px){
+@media(max-width:1184px){
   .sText{
     padding-top:15px ;
   }
@@ -631,9 +631,9 @@ body{
     display: flex;
     justify-content: flex-end;
   }
-  .headerPPP{
+  /* .headerPPP{
     transform: scale(0.95);
-  }
+  } */
 }
 @media(max-width:970px){
   .header-container{
@@ -642,6 +642,12 @@ body{
     justify-content: center ;
   }
 }
+@media(min-width:360px){
+  .header-container{
+    display: flex;
+    transform: scale(0.);
+    justify-content: center ;
+} */
 @media(max-width:800px){
   .header-container{
     display: flex;
@@ -701,28 +707,28 @@ body{
 @media(max-width:564px){
   .header-container{
     display: flex;
-    transform: scale(0.64);
+    transform: scale(0.52);
     justify-content: center ;
 }
 }
 @media(max-width:534px){
   .header-container{
     display: flex;
-    transform: scale(0.61);
+    transform: scale(0.505);
     justify-content: center ;
 }
 }
 @media(max-width:504px){
   .header-container{
     display: flex;
-    transform: scale(0.58);
+    transform: scale(0.5);
     justify-content: center ;
 }
 }
 @media(max-width:483px){
   .header-container{
     display: flex;
-    transform: scale(0.55);
+    transform: scale(0.45);
     justify-content: center ;
 }
 }
@@ -757,24 +763,24 @@ body{
     column-gap: 5px;
   }
   .sMenu{
-    /* justify-content: center; */
+    justify-content: center;
   }
 }
-@media(max-width:360px){
+/* @media(max-width:360px){
   .header-container{
     display: flex;
     justify-content: center;
     transform: scale(0.35);
-    /* margin-top: -53px; */
+    margin-top: -53px; 
   }
 }
 
 
-/* @media(min-width:1786px){
+ @media(min-width:1786px){
   .header-container{
   margin-top: 140px;
 }
-} */
+}  */
 .podbor,.company,.tech,.reviews,.cont,.mapText,.timeText,.whatsapp-text,.miniT{
   font-family: 'Roboto';
   font-weight: 300;
